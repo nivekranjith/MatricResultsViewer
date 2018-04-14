@@ -108,10 +108,6 @@ namespace MatricResultsFinal.Models
         {
             get
             {
-                if (passRate2014 == 0 && wrote2014 > 0)
-                {
-                    passRate2014 = Math.Round((double)passed2014 / wrote2014 * 100, 2);
-                }
 
                 return passRate2014;
             }
@@ -152,11 +148,7 @@ namespace MatricResultsFinal.Models
         {
             get
             {
-                if (passRate2015 == 0 && wrote2015 > 0)
-                {
-                    passRate2015 = Math.Round((double)passed2015 / wrote2015 * 100, 2);
-                }
-
+              
                 return passRate2015;
             }
 
@@ -196,11 +188,6 @@ namespace MatricResultsFinal.Models
         {
             get
             {
-                if (passRate2016 == 0 && wrote2016 > 0)
-                {
-                    passRate2016 = Math.Round((double)passed2016 / wrote2016 * 100, 2);
-                }
-
                 return passRate2016;
             }
 
@@ -209,6 +196,26 @@ namespace MatricResultsFinal.Models
                 passRate2016 = value;
             }
         }
-    
+
+        public void populatePassRates()
+        {
+            if (passRate2016 == 0 && wrote2016 > 0)
+            {
+                passRate2016 = Math.Round((double)passed2016 / wrote2016 * 100, 2);
+            }
+
+            if (passRate2015 == 0 && wrote2015 > 0)
+            {
+                passRate2015 = Math.Round((double)passed2015 / wrote2015 * 100, 2);
+            }
+
+
+            if (passRate2014 == 0 && wrote2014 > 0)
+            {
+                passRate2014 = Math.Round((double)passed2014 / wrote2014 * 100, 2);
+            }
+
+        }
+
     }
 }

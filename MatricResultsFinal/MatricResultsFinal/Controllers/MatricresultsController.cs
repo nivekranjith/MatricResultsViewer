@@ -1,24 +1,27 @@
-﻿using MatricResultsFinal.Models;
+﻿using MatricResultsFinal.DataBase;
+using MatricResultsFinal.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Script.Serialization;
+using System.Web.Script.Services;
+using System.Web.Services;
 
 namespace MatricResultsFinal.Controllers
 {
     public class MatricresultsController : ApiController
     {
-        MatricResultsModel[] test = new MatricResultsModel[]
-        {
-                new MatricResultsModel { Emis = 20  }
-        };
-
+      
         // GET: api/Matricresults
         public IEnumerable<MatricResultsModel> Get()
         {
-            return test;
+            DatabaseManager dbManager = new DatabaseManager();
+            dbManager.connectToDataBase();
+
+            return dbManager.getAllMatricResults();
         }
 
         // GET: api/Matricresults/5
@@ -28,8 +31,19 @@ namespace MatricResultsFinal.Controllers
         }
 
         // POST: api/Matricresults
-        public void Post([FromBody]string value)
+      
+        public void Post([FromBody] string jsonString)
         {
+            DatabaseManager dbManager = new DatabaseManager();
+            dbManager.connectToDataBase();
+
+            var js = new JavaScriptSerializer();
+            js.MaxJsonLength = Int32.MaxValue;
+
+            List<MatricResultsModel> lsDeSerialise = js.Deserialize<List<MatricResultsModel>>(jsonString);
+
+            if (lsDeSerialise.Count > 0)
+                dbManager.insertIntoDatabase(lsDeSerialise);
         }
 
         // PUT: api/Matricresults/5
