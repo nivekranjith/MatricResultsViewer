@@ -48,7 +48,7 @@ namespace MatricResultsFinal.DataBase
             foreach(MatricResultsModel matricResultsModel in lsShouldAdd)
             {
                 sql += " ( default , '" + matricResultsModel.NameOfSchool + "' , " + matricResultsModel.Emis + " , " + matricResultsModel.CenterNo + " , " + matricResultsModel.Wrote2014 + "," + matricResultsModel.Passed2014 +
-                    " , " + matricResultsModel.Wrote2015 + "," + matricResultsModel.Passed2015 + "," + matricResultsModel.Wrote2016 + "," + matricResultsModel.PassRate2016 + ") ,";
+                    " , " + matricResultsModel.Wrote2015 + "," + matricResultsModel.Passed2015 + "," + matricResultsModel.Wrote2016 + "," + matricResultsModel.Passed2016 + ") ,";
             }
 
             sql = sql.Remove(sql.LastIndexOf(","), 1);
