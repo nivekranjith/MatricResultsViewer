@@ -1,0 +1,27 @@
+﻿body {
+}
+
+.inLineBlock
+{
+border: 1px solid black ;
+}
+.rightChart{
+    margin-left: 10px !important ;
+    float:right ;
+}
+
+.leftChart{
+    float:left ;
+}
+#reportHeading {
+    font-size: 20px;
+    font-weight: bold;
+    position: relative;
+    margin-top: -30px;
+    text-align: center;
+    font-style: oblique;
+    padding-bottom: 20px;
+}
+
+
+
